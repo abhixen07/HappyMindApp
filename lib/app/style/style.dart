@@ -22,6 +22,7 @@ const btnyellowColor = Color(0xFFFCC72B);
 const lightGreenColor = Color(0xFF1DA678);
 const darkGreenColor = Color(0xFF06685F);
 const customGreyColor = Color(0xFF858585);
+const lightGreyColor = Color(0xFFD9D9D9);
 
 
 

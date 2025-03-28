@@ -1,7 +1,9 @@
 import 'package:go_router/go_router.dart';
-import 'package:happymindapp/splash/splashscreen/onboarding_page.dart';
 
-import '../../splash/splashscreen/splash_screen.dart';
+import '../../views/auth/login_view.dart';
+import '../../views/auth/signup_view.dart';
+import '../../views/splashscreen/onboarding_page.dart';
+import '../../views/splashscreen/splash_screen.dart';
 
 
 final class AppRoutes {
@@ -32,19 +34,19 @@ final class AppRoutes {
       name: NamedRoutes.onBoardPage.name,
       builder: (context, state) => OnboardingPage(),
     ),
-    //
-    // GoRoute(
-    //   path: loginpage,
-    //   name: NamedRoutes.loginpage.name,
-    //   builder: (context, state) => LoginPage(),
-    // ),
-    //
-    // GoRoute(
-    //   path: signuppage,
-    //   name: NamedRoutes.signuppage.name,
-    //   builder: (context, state) => SignUpPage(),
-    // ),
-    //
+
+    GoRoute(
+      path: loginpage,
+      name: NamedRoutes.loginpage.name,
+      builder: (context, state) => LoginPage(),
+    ),
+
+    GoRoute(
+      path: signuppage,
+      name: NamedRoutes.signuppage.name,
+      builder: (context, state) => SignUpPage(),
+    ),
+
 
 
 

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../app/routes/app_routes.dart';
 import '../../app/style/style.dart';
 
 class OnboardingPage extends StatelessWidget {
@@ -56,7 +58,9 @@ class OnboardingPage extends StatelessWidget {
             ),
             bottomNavigationBar: Padding(
               padding: EdgeInsets.only(left: buttonPadding,right: buttonPadding,top: screenHeight*0.0,bottom: screenHeight*0.09),
-              child: TextButton(onPressed: (){}, child: Text('Get Started')),
+              child: TextButton(onPressed: (){
+                context.goNamed(NamedRoutes.loginpage.name);
+              }, child: Text('Get Started')),
             ),
         );
       },
