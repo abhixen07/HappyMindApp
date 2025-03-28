@@ -61,7 +61,7 @@ class _SignUpPageState extends State<SignUpPage> {
           backgroundColor: whiteColor,
           body: ListView(
             padding: EdgeInsets.only(
-                top: screenWidth * 0.16,bottom: screenWidth * 0.04,
+                top: screenWidth * 0.16,bottom: screenWidth * 0.1,
                 left: screenWidth * 0.06, right: screenWidth * 0.06),
               children: [
                 Column(
@@ -161,7 +161,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         style: TextStyle(
                           color: customGreyColor,
                           fontSize: screenWidth * 0.04,
-                          fontWeight: FontWeight.w700,
+                          fontWeight: FontWeight.w600,
                           fontFamily: 'OpenSans',
                         ),
                         children: [
@@ -186,15 +186,6 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ],
             ),
-          bottomNavigationBar: Padding(
-            padding: EdgeInsets.only(
-              left: screenWidth * 0.2,
-              right: screenWidth * 0.2,
-              top: screenHeight * 0.01,
-              bottom: screenHeight * 0.01,
-            ),
-
-          ),
         );
   }
 }
