@@ -163,7 +163,7 @@ class _LoginPageState extends State<LoginPage> {
                         style: TextStyle(
                           color: customGreyColor,
                           fontSize: screenWidth * 0.04,
-                          fontWeight: FontWeight.w700,
+                          fontWeight: FontWeight.w600,
                           fontFamily: 'OpenSans',
                         ),
                         children: [
