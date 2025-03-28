@@ -155,43 +155,40 @@ class _LoginPageState extends State<LoginPage> {
                           child: SvgPicture.asset('assets/svg/google_svg.svg',height: 33,),),
                       ],
                     ),
+                    SizedBox(height: screenHeight * 0.06),
+
+                    RichText(
+                      text: TextSpan(
+                        text: "Don't have an account? ",
+                        style: TextStyle(
+                          color: customGreyColor,
+                          fontSize: screenWidth * 0.04,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: 'OpenSans',
+                        ),
+                        children: [
+                          TextSpan(
+                            text: 'Sign up',
+                            style: TextStyle(
+                              color: lightGreenColor,
+                              fontSize: screenWidth * 0.04,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: 'OpenSans',
+                            ),
+
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                GoRouter.of(context).pushNamed((NamedRoutes.signuppage.name));
+                              },
+                          ),
+                        ],
+                      ),
+                    )
 
                   ],
                 ),
               ],
             ),
-          bottomNavigationBar: Padding(
-            padding: EdgeInsets.only(
-              left: screenWidth * 0.2,
-              right: screenWidth * 0.2,
-              top: screenHeight * 0.01,
-              bottom: screenHeight * 0.06,
-            ),
-            child: RichText(
-              text: TextSpan(
-                text: "Don't have an account? ",
-                style: TextStyle(
-                  color: customGreyColor,
-                  fontSize: screenWidth * 0.04,
-                ),
-                children: [
-                  TextSpan(
-                    text: 'Sign up',
-                    style: TextStyle(
-                      color: lightGreenColor,
-                      fontWeight: FontWeight.w600,
-                      fontSize: screenWidth * 0.04,
-                    ),
-
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () {
-                        GoRouter.of(context).pushNamed((NamedRoutes.signuppage.name));
-                      },
-                  ),
-                ],
-              ),
-            ),
-          ),
         );
   }
 }
