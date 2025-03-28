@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../app/style/style.dart';
 import '../../services/splashservice/splash_service.dart';
@@ -32,10 +33,8 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Image.asset(
-                'assets/images/splash_logo.png',
-                width: screenWidth * 0.6,
-              ),
+              SvgPicture.asset('assets/svg/splash_logo_svg.svg',
+              height: screenWidth*0.22,),
             ],
           ),
         ),

@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Image.asset('assets/images/app_logo.png'),
+                    SvgPicture.asset('assets/svg/app_logo_svg.svg',height: screenHeight*0.08,),
                     SizedBox(height: screenHeight * 0.04),
 
                     Text(
