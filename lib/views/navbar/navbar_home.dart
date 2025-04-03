@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:happymindapp/views/home/home_page.dart';
 import 'package:happymindapp/views/navbar/doctor_page.dart';
 import 'navbar.dart';
 
@@ -19,9 +20,8 @@ class _NavBarHomePageState extends State<NavBarHomePage> {
   }
 
   final List<Widget> _pages = [
-    Center(child: Text("Home Page")),
+    HomePage(),
     Center(child: Text("Search Page")),
-    // Center(child: Text("Doctors Page")),
     DoctorsPage(),
     Center(child: Text("Appointment Page")),
     Center(child: Text("Profile Page")),

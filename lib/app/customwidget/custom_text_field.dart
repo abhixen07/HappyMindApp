@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../style/style.dart';
 
 class CustomTextFormField extends StatefulWidget {
+  final Color? fillColor;
   final String? label;
   final String hintText;
   final bool isRequired;
@@ -42,6 +43,7 @@ class CustomTextFormField extends StatefulWidget {
   final ValueChanged<String>? onChanged;
 
   const CustomTextFormField({
+    this.fillColor,
     this.label,
     this.hintText = '',
     this.isRequired = false,
@@ -136,19 +138,20 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 : (_isFocused ? whiteColor : whiteColor),
             boxShadow: widget.addShadow
                 ? [
-                    BoxShadow(
-                      color: widget.shadowColor ?? greyColor.withOpacity(0.3),
-                      blurRadius: widget.shadowBlurRadius ?? 4.0,
-                      offset: Offset(
-                        widget.shadowOffsetX ?? 0.0,
-                        widget.shadowOffsetY ?? 4.0,
-                      ),
-                    ),
-                  ]
+              BoxShadow(
+                color: widget.shadowColor ?? greyColor.withOpacity(0.3),
+                blurRadius: widget.shadowBlurRadius ?? 4.0,
+                offset: Offset(
+                  widget.shadowOffsetX ?? 0.0,
+                  widget.shadowOffsetY ?? 4.0,
+                ),
+              ),
+            ]
                 : [],
             borderRadius: BorderRadius.circular(widget.borderRadius),
           ),
           child: TextFormField(
+
             controller: widget.controller,
             focusNode: widget.currentFocusNode,
             obscureText: _obscureText,
@@ -174,7 +177,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             ),
 
             decoration: InputDecoration(
-              fillColor: lightGreyColor.withOpacity(0.3),
+              fillColor:widget.fillColor?? lightGreyColor.withOpacity(0.3),
               filled: true,
               hintText: widget.isRequiredHint && widget.hintText.isNotEmpty
                   ? "${widget.hintText} "
@@ -185,70 +188,70 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 fontWeight: widget.hintFontWeight ?? FontWeight.normal,
               ),
               contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+              const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               enabledBorder: widget.noBorder
                   ? OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: lightGreyColor,
-                        width: widget.borderWidth + 0.5,
-                      ),
-                      borderRadius: BorderRadius.circular(widget.borderRadius),
-                    )
+                borderSide: BorderSide(
+                  color: lightGreyColor,
+                  width: widget.borderWidth + 0.5,
+                ),
+                borderRadius: BorderRadius.circular(widget.borderRadius),
+              )
                   : OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color:
-                            _isFieldEmpty ? lightGreyColor : lightGreyColor,
-                        width: widget.borderWidth,
-                      ),
-                      borderRadius: BorderRadius.circular(widget.borderRadius),
-                    ),
+                borderSide: BorderSide(
+                  color:
+                  _isFieldEmpty ? lightGreyColor : lightGreyColor,
+                  width: widget.borderWidth,
+                ),
+                borderRadius: BorderRadius.circular(widget.borderRadius),
+              ),
               focusedBorder: widget.noBorder
                   ? OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: lightGreyColor,
-                        width: widget.borderWidth + 0.5,
-                      ),
-                      borderRadius: BorderRadius.circular(widget.borderRadius),
-                    )
+                borderSide: BorderSide(
+                  color: lightGreyColor,
+                  width: widget.borderWidth + 0.5,
+                ),
+                borderRadius: BorderRadius.circular(widget.borderRadius),
+              )
                   : OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: widget.focusedBorderColor ?? darkGreenColor,
-                        width: widget.borderWidth + 0.5,
-                      ),
-                      borderRadius: BorderRadius.circular(widget.borderRadius),
-                    ),
+                borderSide: BorderSide(
+                  color: widget.focusedBorderColor ?? darkGreenColor,
+                  width: widget.borderWidth + 0.5,
+                ),
+                borderRadius: BorderRadius.circular(widget.borderRadius),
+              ),
               errorBorder: widget.noBorder
                   ? InputBorder.none
                   : OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: widget.enabledErrorBorderColor ?? red2Color,
-                        width: widget.borderWidth,
-                      ),
-                      borderRadius: BorderRadius.circular(widget.borderRadius),
-                    ),
+                borderSide: BorderSide(
+                  color: widget.enabledErrorBorderColor ?? red2Color,
+                  width: widget.borderWidth,
+                ),
+                borderRadius: BorderRadius.circular(widget.borderRadius),
+              ),
               focusedErrorBorder: widget.noBorder
                   ? InputBorder.none
                   : OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: widget.focusedErrorBorderColor ?? red2Color,
-                        width: widget.borderWidth + 0.5,
-                      ),
-                      borderRadius: BorderRadius.circular(widget.borderRadius),
-                    ),
+                borderSide: BorderSide(
+                  color: widget.focusedErrorBorderColor ?? red2Color,
+                  width: widget.borderWidth + 0.5,
+                ),
+                borderRadius: BorderRadius.circular(widget.borderRadius),
+              ),
               suffixIcon: widget.obscureText
                   ? IconButton(
-                      icon: Icon(
-                        _obscureText
-                            ? Icons.visibility_off_outlined
-                            : Icons.visibility_outlined,
-                        color: lightGreenColor,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          _obscureText = !_obscureText;
-                        });
-                      },
-                    )
+                icon: Icon(
+                  _obscureText
+                      ? Icons.visibility_off_outlined
+                      : Icons.visibility_outlined,
+                  color: lightGreenColor,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _obscureText = !_obscureText;
+                  });
+                },
+              )
                   : widget.suffixIcon,
               prefixIcon: widget.prefixIcon,
             ),
