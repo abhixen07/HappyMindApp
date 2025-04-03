@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:happymindapp/views/navbar/navbar_home.dart';
 
 import '../../views/auth/login_view.dart';
 import '../../views/auth/signup_view.dart';
@@ -18,6 +19,8 @@ final class AppRoutes {
   ///Auth Pages
   static const String loginpage = "/loginpage";
   static const String signuppage = "/signuppage";
+
+  static const String navbarpage = "/navbarpage";
 
 
 
@@ -47,6 +50,12 @@ final class AppRoutes {
       builder: (context, state) => SignUpPage(),
     ),
 
+    GoRoute(
+      path: navbarpage,
+      name: NamedRoutes.navbarpage.name,
+      builder: (context, state) => NavBarHomePage(),
+    ),
+
 
 
 
@@ -59,4 +68,5 @@ enum NamedRoutes {
   onBoardPage,
   loginpage,
   signuppage,
+  navbarpage
 }

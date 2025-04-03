@@ -124,7 +124,9 @@ class _LoginPageState extends State<LoginPage> {
                     SizedBox(height: screenHeight * 0.08),
 
                     /// Sign in Button
-                    TextButton(onPressed: (){},
+                    TextButton(onPressed: (){
+                      GoRouter.of(context).pushNamed((NamedRoutes.navbarpage.name));
+                    },
                         child: Text('Sign In')
                     ),
                     SizedBox(height: screenHeight * 0.02),

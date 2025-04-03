@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   get:
   go_router:
+  gap:
 #  shared_preferences: 2.2.0
 #  gradient_borders:
   flutter_svg:
