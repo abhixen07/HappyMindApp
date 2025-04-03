@@ -39,6 +39,7 @@ class CustomTextFormField extends StatefulWidget {
   final FormFieldValidator<String>? validator;
   final FocusNode? currentFocusNode;
   final FocusNode? nextFocusNode;
+  final ValueChanged<String>? onChanged;
 
   const CustomTextFormField({
     this.label,
@@ -77,6 +78,7 @@ class CustomTextFormField extends StatefulWidget {
     this.isRequiredlabelText,
     this.isRequiredlabelColor,
     this.isRequiredlabelFontSize,
+    this.onChanged,
     super.key,
   });
 
@@ -252,6 +254,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             ),
 
             validator: widget.validator,
+            onChanged: widget.onChanged,
           ),
         ),
       ],
