@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:table_calendar/table_calendar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:table_calendar/table_calendar.dart';
 
+import '../../app/routes/app_routes.dart';
 import '../../app/style/style.dart';
 
 class SelectDateTimePage extends StatefulWidget {
@@ -15,8 +17,8 @@ class SelectDateTimePage extends StatefulWidget {
 class _SelectDateTimePageState extends State<SelectDateTimePage> {
   DateTime _selectedDay = DateTime.now();
 
-  List<String> timeSlots = ['10:00 AM', '11:00 AM', '12:00 PM'];
-  String? _selectedTime;
+  List<String> timeSlots = ["10.00 AM", "11.00 AM", "12.00 PM"];
+  String selectedTime = "11.00 AM";
 
   @override
   Widget build(BuildContext context) {
@@ -136,34 +138,42 @@ class _SelectDateTimePageState extends State<SelectDateTimePage> {
               ],
             ),
             SizedBox(height: screenHeight * 0.03),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: timeSlots.map((time) {
-                bool isSelected = _selectedTime == time;
-                return GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      _selectedTime = time;
-                    });
-                  },
-                  child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 15),
-                    margin: EdgeInsets.symmetric(horizontal: 5),
-                    decoration: BoxDecoration(
-                      color: isSelected ? lightGreenColor : lightGreyColor.withOpacity(0.3),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Text(
-                      time,
-                      style: TextStyle(
-                        color: isSelected ? whiteColor : blackColor,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16
+            SizedBox(
+              height: screenHeight * 0.06, // Adjust height as needed
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: timeSlots.length,
+                itemBuilder: (context, index) {
+                  String time = timeSlots[index];
+                  bool isSelected = time == selectedTime;
+
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedTime = time;
+                      });
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: 12, horizontal: 15),
+                      margin: EdgeInsets.symmetric(horizontal: 10),
+                      decoration: BoxDecoration(
+                        color: isSelected ? lightGreenColor : lightGreyColor.withOpacity(0.3),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Center( // Center text properly
+                        child: Text(
+                          time,
+                          style: TextStyle(
+                              color: isSelected ? whiteColor : blackColor,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 16
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                );
-              }).toList(),
+                  );
+                },
+              ),
             ),
             SizedBox(height: screenHeight*0.12,),
             Row(
@@ -176,7 +186,9 @@ class _SelectDateTimePageState extends State<SelectDateTimePage> {
                 Expanded(
                   flex: 6,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      GoRouter.of(context).pushNamed(NamedRoutes.paymentdonepage.name);
+                    },
                     child:
                         Text(
                           'Set Appointment',

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:happymindapp/views/appointment/appointment_page.dart';
+import 'package:happymindapp/views/navbar/selectdatetimepage.dart';
 import 'package:happymindapp/views/home/home_page.dart';
+import 'package:happymindapp/views/navbar/appointmentpage.dart';
 import 'package:happymindapp/views/navbar/doctor_page.dart';
+import 'package:happymindapp/views/navbar/search_doctor_page.dart';
 import 'navbar.dart';
 
 class NavBarHomePage extends StatefulWidget {
@@ -22,9 +24,9 @@ class _NavBarHomePageState extends State<NavBarHomePage> {
 
   final List<Widget> _pages = [
     HomePage(),
-    Center(child: Text("Search Page")),
+   SearchDoctorPage(),
     DoctorsPage(),
-    Center(child: Text("Appointment Page")),
+    AppointmentPage(),
     SelectDateTimePage(),
   ];
 

@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
-import 'package:happymindapp/views/appointment/appointment_page.dart';
+import 'package:happymindapp/views/navbar/paymentdonepage.dart';
+import 'package:happymindapp/views/navbar/selectdatetimepage.dart';
 import 'package:happymindapp/views/navbar/navbar_home.dart';
 
 import '../../views/auth/login_view.dart';
@@ -23,7 +24,8 @@ final class AppRoutes {
 
   static const String navbarpage = "/navbarpage";
 
-  static const String appointmentpage = "/appointmentpage";
+  static const String selectimepage = "/selecttimepage";
+  static const String  paymentdonepage = "/paymentdonepage";
 
 
 
@@ -60,9 +62,14 @@ final class AppRoutes {
     ),
 
     GoRoute(
-      path: appointmentpage,
-      name: NamedRoutes.appointmentpage.name,
+      path:selectimepage,
+      name: NamedRoutes.selectimepage.name,
       builder: (context, state) => SelectDateTimePage(),
+    ),
+    GoRoute(
+      path:paymentdonepage,
+      name: NamedRoutes.paymentdonepage.name,
+      builder: (context, state) => PaymentDonePage()
     ),
 
 
@@ -78,6 +85,7 @@ enum NamedRoutes {
   loginpage,
   signuppage,
   navbarpage,
-  appointmentpage
+  selectimepage,
+  paymentdonepage,
 
 }
