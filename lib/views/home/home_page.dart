@@ -59,8 +59,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
 
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       appBar: AppBar(
@@ -97,7 +97,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 16),
         children: [
           Row(
            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -129,7 +129,7 @@ class _HomePageState extends State<HomePage> {
                   height: 50,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: customGreyColor)
+                    border: Border.all(color: lightGreyColor,width: 1.5)
                   ),
                   child:  CircleAvatar(
                     //radius: 25,
@@ -151,36 +151,35 @@ class _HomePageState extends State<HomePage> {
             children: [
               Expanded(
                 child: _buildActionCard("Book Appointment",
-                    'https://randomuser.me/api/portraits/men/4.jpg'),
+                    'assets/images/book_appointment.png'),
               ),
-              SizedBox(width: 8),
+              SizedBox(width: 16),
               Expanded(
                 child: _buildActionCard("Instant Video Consult",
-                    'https://randomuser.me/api/portraits/men/1.jpg'),
+                    'assets/images/book_video_call.png'),
               ),
             ],
           ),
-          SizedBox(height: 16),
+          SizedBox(height: screenHeight*0.03),
 
           // Categories
           Text("Categories",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-          SizedBox(height: 8),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700)),
+          SizedBox(height: screenHeight*0.02),
           _buildCategories(),
 
-          SizedBox(height: 16),
+          SizedBox(height: screenHeight*0.03),
 
           // Doctors List
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text("All Doctors",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              Text("View all >", style: TextStyle(color: Colors.green)),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700)),
+              Text("View all >", style: TextStyle(color: lightGreenColor,fontWeight: FontWeight.w500)),
             ],
           ),
-          SizedBox(height: 8),
-          // Doctors List
+          SizedBox(height: screenHeight*0.02), // Doctors List
           SizedBox(
             height: 400,
             child: ListView.builder(
@@ -205,17 +204,43 @@ class _HomePageState extends State<HomePage> {
       height: 120,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: whiteColor,
-        boxShadow: [BoxShadow(color: Colors.grey.shade200, blurRadius: 5)],
+        boxShadow: [BoxShadow(color: lightGreyColor.withOpacity(0.5), blurRadius: 5)],
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+      child: Stack(
+        alignment: Alignment.bottomCenter,
         children: [
-          Expanded(child: Image.network(imagePath, fit: BoxFit.cover)),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(title,
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
+          /// Background Image
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Image.asset(
+              imagePath,
+              width: double.infinity,
+              height: 120,
+              fit: BoxFit.cover,
+            ),
+          ),
+
+          /// White Box with Text
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: whiteColor,
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(10),
+                bottomRight: Radius.circular(10),
+              ),
+            ),
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontFamily: 'Inter',
+                fontSize: 13,
+                fontWeight: FontWeight.w400,
+                color: blackColor,
+              ),
+            ),
           ),
         ],
       ),
@@ -232,7 +257,7 @@ class _HomePageState extends State<HomePage> {
       {"icon": 'assets/svg/pulmonogistIcon.svg', "title": "Pulmonologist"},
     ];
 
-    return Container(
+    return SizedBox(
       height: 80,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -243,14 +268,14 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               children: [
                 CircleAvatar(
-                  radius: 25,
-                  backgroundColor: Colors.green.withOpacity(0.1),
+                  radius: 26,
+                  backgroundColor: lightGreenColor.withOpacity(0.21),
                   child: SvgPicture.asset(categories[index]["icon"],
-                      color: Colors.green),
+                      color: lightGreenColor),
                 ),
                 SizedBox(height: 5),
                 Text(categories[index]["title"],
-                    style: TextStyle(fontSize: 12)),
+                    style: TextStyle(fontSize: 12,fontWeight: FontWeight.w700)),
               ],
             ),
           );
