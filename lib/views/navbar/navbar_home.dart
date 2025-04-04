@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:happymindapp/views/appointment/appointment_page.dart';
 import 'package:happymindapp/views/home/home_page.dart';
 import 'package:happymindapp/views/navbar/doctor_page.dart';
 import 'navbar.dart';
@@ -24,7 +25,7 @@ class _NavBarHomePageState extends State<NavBarHomePage> {
     Center(child: Text("Search Page")),
     DoctorsPage(),
     Center(child: Text("Appointment Page")),
-    Center(child: Text("Profile Page")),
+    SelectDateTimePage(),
   ];
 
   @override

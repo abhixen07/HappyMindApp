@@ -37,6 +37,7 @@ dependencies:
   get:
   go_router:
   gap:
+  table_calendar:
 #  shared_preferences: 2.2.0
 #  gradient_borders:
   flutter_svg:
