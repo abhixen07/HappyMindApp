@@ -68,11 +68,16 @@ class _AppointmentPageState extends State<AppointmentPage> {
                       Row(
                         children: [
 
-                          CircleAvatar(
-                            radius: 16,
-                            backgroundColor: lightGreenColor.withOpacity(0.21),
-                            child: SvgPicture.asset('assets/svg/chat_1.svg',
-                              color: darkGreenColor,),
+                          GestureDetector(
+                            onTap: (){
+                              GoRouter.of(context).pushNamed(NamedRoutes.chatpage.name);
+                            },
+                            child: CircleAvatar(
+                              radius: 16,
+                              backgroundColor: lightGreenColor.withOpacity(0.21),
+                              child: SvgPicture.asset('assets/svg/chat_1.svg',
+                                color: darkGreenColor,),
+                            ),
                           ),
                           SizedBox(width: width * 0.04),
                           CircleAvatar(
