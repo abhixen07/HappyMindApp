@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:happymindapp/views/messages/messages_page.dart';
 import 'package:happymindapp/views/navbar/selectdatetimepage.dart';
 import 'package:happymindapp/views/home/home_page.dart';
 import 'package:happymindapp/views/navbar/appointmentpage.dart';
@@ -25,10 +26,10 @@ class _NavBarHomePageState extends State<NavBarHomePage> {
 
   final List<Widget> _pages = [
     HomePage(),
-   SearchDoctorPage(),
+    // SearchDoctorPage(),
+    MessagePage(),
     DoctorsPage(),
     AppointmentPage(),
-    // SelectDateTimePage(),
     ProfilePage()
   ];
 

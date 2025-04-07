@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:happymindapp/views/call/call_page.dart';
 import 'package:happymindapp/views/chatpage/chatpage.dart';
 import 'package:happymindapp/views/navbar/paymentdonepage.dart';
 import 'package:happymindapp/views/navbar/selectdatetimepage.dart';
@@ -28,6 +29,7 @@ final class AppRoutes {
   static const String selectimepage = "/selecttimepage";
   static const String  paymentdonepage = "/paymentdonepage";
   static const String  chatpage = "/chatpage";
+  static const String  callpage = "/callpage";
 
 
 
@@ -81,6 +83,12 @@ final class AppRoutes {
       builder: (context, state) => ChatPage()
     ),
 
+    GoRoute(
+      path:callpage,
+      name: NamedRoutes.callpage.name,
+      builder: (context, state) => CallPage()
+    ),
+
 
 
 
@@ -97,5 +105,6 @@ enum NamedRoutes {
   selectimepage,
   paymentdonepage,
   chatpage,
+  callpage
 
 }

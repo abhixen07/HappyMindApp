@@ -24,6 +24,7 @@ const darkGreenColor = Color(0xFF06685F);
 const customGreyColor = Color(0xFF858585);
 const lightGreyColor = Color(0xFFD9D9D9);
 const amberColor = Color(0xFFF89603);
+const greenIndicatorColor = Colors.green;
 
 
 
@@ -36,5 +37,14 @@ LinearGradient linearGradientSplash =LinearGradient(
     Color(0xFF69D7C4),
     Color(0xFF12986D),
     Color(0xFF69D7C4),
+  ],
+);
+
+LinearGradient linearGradientCall =LinearGradient(
+  begin: Alignment.topCenter,
+  end: Alignment.bottomCenter,
+  colors: [
+    Color(0xFF7BC1B7),
+    Color(0xFFB6E5DE),
   ],
 );
