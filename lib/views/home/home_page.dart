@@ -163,12 +163,12 @@ class _HomePageState extends State<HomePage> {
           SizedBox(height: screenHeight*0.03),
 
           // Categories
-          Text("Categories",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700)),
-          SizedBox(height: screenHeight*0.02),
-          _buildCategories(),
-
-          SizedBox(height: screenHeight*0.03),
+          // Text("Categories",
+          //     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700)),
+          // SizedBox(height: screenHeight*0.02),
+          // _buildCategories(),
+          //
+          // SizedBox(height: screenHeight*0.03),
 
           // Doctors List
           Row(
@@ -247,40 +247,40 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildCategories() {
-    List<Map<String, dynamic>> categories = [
-      {"icon": 'assets/svg/eyeIcon.svg', "title": "Eye Specialist"},
-      {"icon": 'assets/svg/dentistIcon.svg', "title": "Dentist"},
-      {"icon": 'assets/svg/cadiologistIcon.svg', "title": "Cardiologist"},
-      {"icon": 'assets/svg/pulmonogistIcon.svg', "title": "Pulmonologist"},
-      {"icon": 'assets/svg/pulmonogistIcon.svg', "title": "Pulmonologist"},
-      {"icon": 'assets/svg/pulmonogistIcon.svg', "title": "Pulmonologist"},
-    ];
-
-    return SizedBox(
-      height: 80,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: categories.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.only(right: 16.0),
-            child: Column(
-              children: [
-                CircleAvatar(
-                  radius: 26,
-                  backgroundColor: lightGreenColor.withOpacity(0.21),
-                  child: SvgPicture.asset(categories[index]["icon"],
-                      color: lightGreenColor),
-                ),
-                SizedBox(height: 5),
-                Text(categories[index]["title"],
-                    style: TextStyle(fontSize: 12,fontWeight: FontWeight.w700)),
-              ],
-            ),
-          );
-        },
-      ),
-    );
-  }
+  // Widget _buildCategories() {
+  //   List<Map<String, dynamic>> categories = [
+  //     {"icon": 'assets/svg/eyeIcon.svg', "title": "Eye Specialist"},
+  //     {"icon": 'assets/svg/dentistIcon.svg', "title": "Dentist"},
+  //     {"icon": 'assets/svg/cadiologistIcon.svg', "title": "Cardiologist"},
+  //     {"icon": 'assets/svg/pulmonogistIcon.svg', "title": "Pulmonologist"},
+  //     {"icon": 'assets/svg/pulmonogistIcon.svg', "title": "Pulmonologist"},
+  //     {"icon": 'assets/svg/pulmonogistIcon.svg', "title": "Pulmonologist"},
+  //   ];
+  //
+  //   return SizedBox(
+  //     height: 80,
+  //     child: ListView.builder(
+  //       scrollDirection: Axis.horizontal,
+  //       itemCount: categories.length,
+  //       itemBuilder: (context, index) {
+  //         return Padding(
+  //           padding: const EdgeInsets.only(right: 16.0),
+  //           child: Column(
+  //             children: [
+  //               CircleAvatar(
+  //                 radius: 26,
+  //                 backgroundColor: lightGreenColor.withOpacity(0.21),
+  //                 child: SvgPicture.asset(categories[index]["icon"],
+  //                     color: lightGreenColor),
+  //               ),
+  //               SizedBox(height: 5),
+  //               Text(categories[index]["title"],
+  //                   style: TextStyle(fontSize: 12,fontWeight: FontWeight.w700)),
+  //             ],
+  //           ),
+  //         );
+  //       },
+  //     ),
+  //   );
+  // }
 }

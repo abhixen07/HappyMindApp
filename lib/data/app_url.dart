@@ -1,5 +1,4 @@
- String baseUrl = "https://dev.iamscientist.ai/scientist/";
+ String baseUrl = "https://dev.iamscientist.ai/happy/user";
 
- String helpDeskUrl = '${baseUrl}help/create';
- String registerAsUrl = '${baseUrl}user/register';
- String courseRegisterUrl = '${baseUrl}enquiry/create-mobile';
+ String loginUrl = '${baseUrl}/login';
+ String signUpUrl = '${baseUrl}/create';

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:happymindapp/app/routes/app_routes.dart';
 import 'package:happymindapp/app/style/style.dart';
+
+import '../../viewmodel/login_view_model.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -14,11 +17,12 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: whiteColor,
-        leading: IconButton(
-            onPressed:(){
-              Navigator.pop(context);
-            },
-            icon: Icon(Icons.arrow_back_ios_new_outlined, color: blackColor)),
+        // leading: IconButton(
+        //     onPressed:(){
+        //       Navigator.pop(context);
+        //     },
+        //     icon: Icon(Icons.arrow_back_ios_new_outlined, color: blackColor)),
+        automaticallyImplyLeading: false,
         title: Text(
           "Profile",
           style: TextStyle(
@@ -80,8 +84,8 @@ class ProfilePage extends StatelessWidget {
           ),
           _buildProfileOption(
             onPress: (){
-              context.goNamed(NamedRoutes.loginpage.name);
-            },
+              final loginViewModel = Get.put(LoginViewModel());
+              loginViewModel.logoutUser(context);            },
             context,
             icon: Icons.logout,
             label: "Logout",

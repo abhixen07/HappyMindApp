@@ -17,15 +17,16 @@ class CustomBottomNav extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Map<String, String>> items = [
       {"icon": "assets/svg/home.svg", "title": "Home"},
-      {"icon": "assets/svg/search.svg", "title": "Search"},
+      {"icon": "assets/svg/chat_1.svg", "title": "Messages"},
       {"icon": "assets/svg/doctors.svg", "title": "Doctors"},
       {"icon": "assets/svg/appointment.svg", "title": "Appointment"},
+      {"icon": "assets/svg/search.svg", "title": "Search"},
       {"icon": "assets/svg/profile.svg", "title": "Profile"},
     ];
 
     return Container(
       height: 82,
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       decoration: const BoxDecoration(
         color: whiteColor,
         borderRadius: BorderRadius.only(
@@ -50,8 +51,8 @@ class CustomBottomNav extends StatelessWidget {
               children: [
                 SvgPicture.asset(
                   items[index]["icon"]!,
-                  height: 24,
-                  width: 24,
+                  height: 22,
+                  width: 22,
                   color: selectedIndex == index ? lightGreenColor : customGreyColor,
                 ),
                 const Gap(4),

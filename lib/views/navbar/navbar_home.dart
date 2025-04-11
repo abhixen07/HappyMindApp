@@ -26,10 +26,10 @@ class _NavBarHomePageState extends State<NavBarHomePage> {
 
   final List<Widget> _pages = [
     HomePage(),
-    // SearchDoctorPage(),
     MessagePage(),
     DoctorsPage(),
     AppointmentPage(),
+    SearchDoctorPage(),
     ProfilePage()
   ];
 

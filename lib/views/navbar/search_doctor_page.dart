@@ -72,10 +72,10 @@ class _SearchDoctorPageState extends State<SearchDoctorPage> {
         ),
         backgroundColor: whiteColor,
         elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new_outlined, color: blackColor),
-          onPressed: () {},
-        ),
+        // leading: IconButton(
+        //   icon: Icon(Icons.arrow_back_ios_new_outlined, color: blackColor),
+        //   onPressed: () {},
+        // ),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),

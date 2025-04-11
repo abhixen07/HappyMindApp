@@ -34,10 +34,11 @@ class _AppointmentPageState extends State<AppointmentPage> {
         ),
         backgroundColor: whiteColor,
         elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new_outlined, color: blackColor),
-          onPressed: () {},
-        ),
+        automaticallyImplyLeading: false,
+        // leading: IconButton(
+        //   icon: Icon(Icons.arrow_back_ios_new_outlined, color: blackColor),
+        //   onPressed: () {},
+        // ),
       ),
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: width * 0.05,vertical: width*0.05),

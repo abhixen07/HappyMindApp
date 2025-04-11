@@ -72,10 +72,11 @@ class _DoctorsPageState extends State<DoctorsPage> {
         ),
         backgroundColor: whiteColor,
         elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new_outlined, color: blackColor),
-          onPressed: () {},
-        ),
+        automaticallyImplyLeading: false,
+        // leading: IconButton(
+        //   icon: Icon(Icons.arrow_back_ios_new_outlined, color: blackColor),
+        //   onPressed: () {},
+        // ),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
