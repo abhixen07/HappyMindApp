@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:happymindapp/app/routes/app_routes.dart';
 
 import '../../app/style/style.dart';
+import '../../viewmodel/book_appointment_view_model.dart';
 
-class AppointmentPage extends StatefulWidget {
-  @override
-  _AppointmentPageState createState() => _AppointmentPageState();
-}
+class AppointmentPage extends StatelessWidget {
+  final AppointmentViewModel viewModel = Get.put(AppointmentViewModel());
 
-class _AppointmentPageState extends State<AppointmentPage> {
-  String selectedTime = "11.00 AM";
-  String selectedDate = "Sun 4";
-
-  List<String> timeSlots = ["10.00 AM", "11.00 AM", "12.00 PM"];
-  List<String> dates = ["Sun 4", "Mon 5", "Tue 6"];
+  final List<String> timeSlots = ["10.00 AM", "11.00 AM", "12.00 PM"];
+  final List<String> dates = ["Sun 4", "Mon 5", "Tue 6"];
 
   @override
   Widget build(BuildContext context) {
@@ -35,14 +31,12 @@ class _AppointmentPageState extends State<AppointmentPage> {
         backgroundColor: whiteColor,
         elevation: 0,
         automaticallyImplyLeading: false,
-        // leading: IconButton(
-        //   icon: Icon(Icons.arrow_back_ios_new_outlined, color: blackColor),
-        //   onPressed: () {},
-        // ),
       ),
       body: ListView(
         padding: EdgeInsets.symmetric(
-            horizontal: width * 0.05, vertical: width * 0.05),
+          horizontal: width * 0.05,
+          vertical: width * 0.05,
+        ),
         children: [
           /// Doctor Profile
           Row(
@@ -126,7 +120,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
           ),
           SizedBox(height: height * 0.04),
 
-          // Details
+          /// Details Section
           Text(
             "Details",
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -134,8 +128,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
           SizedBox(height: height * 0.01),
           Text(
             textAlign: TextAlign.justify,
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit.sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Ut commodo efficitur neque"
-            ". Ut diam quam, semper iaculis condimentum ac, vestibulum eu nisl. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis...",
             style: TextStyle(
               fontSize: width * 0.04,
               color: greyColor,
@@ -143,38 +136,31 @@ class _AppointmentPageState extends State<AppointmentPage> {
           ),
           SizedBox(height: height * 0.04),
 
-          /// Working Hours
+          /// Time Slots
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Working Hours',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                'See All',
-                style: TextStyle(fontSize: 14, color: blackColor),
-              )
+              Text('Working Hours',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              Text('See All',
+                  style: TextStyle(fontSize: 14, color: blackColor)),
             ],
           ),
           SizedBox(height: height * 0.015),
           SizedBox(
-            height: height * 0.06, // Adjust height as needed
-            child: ListView.builder(
+            height: height * 0.06,
+            child:  ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: timeSlots.length,
               itemBuilder: (context, index) {
                 String time = timeSlots[index];
-                bool isSelected = time == selectedTime;
+                bool isSelected = time == viewModel.selectedTime.value;
 
                 return GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      selectedTime = time;
-                    });
-                  },
+                  onTap: () => viewModel.setSelectedTime(time),
                   child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 15),
+                    padding:
+                    EdgeInsets.symmetric(vertical: 12, horizontal: 15),
                     margin: EdgeInsets.symmetric(horizontal: 10),
                     decoration: BoxDecoration(
                       color: isSelected
@@ -183,13 +169,13 @@ class _AppointmentPageState extends State<AppointmentPage> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Center(
-                      // Center text properly
                       child: Text(
                         time,
                         style: TextStyle(
-                            color: isSelected ? whiteColor : blackColor,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 16),
+                          color: isSelected ? whiteColor : blackColor,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                        ),
                       ),
                     ),
                   ),
@@ -197,41 +183,33 @@ class _AppointmentPageState extends State<AppointmentPage> {
               },
             ),
           ),
-
           SizedBox(height: height * 0.03),
 
-          // Date Selection
+          /// Date Selection
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Date',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                'See All',
-                style: TextStyle(fontSize: 14, color: blackColor),
-              )
+              Text('Date',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              Text('See All',
+                  style: TextStyle(fontSize: 14, color: blackColor)),
             ],
           ),
           SizedBox(height: height * 0.015),
           SizedBox(
-            height: height * 0.06, // Adjust height as needed
+            height: height * 0.06,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: dates.length,
               itemBuilder: (context, index) {
                 String date = dates[index];
-                bool isSelected = date == selectedDate;
+                bool isSelected = date == viewModel.selectedDate.value;
 
                 return GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      selectedDate = date;
-                    });
-                  },
+                  onTap: () => viewModel.setSelectedDate(date),
                   child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 30),
+                    padding:
+                    EdgeInsets.symmetric(vertical: 12, horizontal: 30),
                     margin: EdgeInsets.symmetric(horizontal: 10),
                     decoration: BoxDecoration(
                       color: isSelected
@@ -243,9 +221,10 @@ class _AppointmentPageState extends State<AppointmentPage> {
                       child: Text(
                         date,
                         style: TextStyle(
-                            color: isSelected ? whiteColor : blackColor,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 16),
+                          color: isSelected ? whiteColor : blackColor,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                        ),
                       ),
                     ),
                   ),
@@ -253,15 +232,34 @@ class _AppointmentPageState extends State<AppointmentPage> {
               },
             ),
           ),
-
           SizedBox(height: height * 0.05),
 
           /// Book an Appointment Button
-          TextButton(
-              onPressed: () {
-                GoRouter.of(context).pushNamed(NamedRoutes.selectimepage.name);
-              },
-              child: Text('Book an Appointment')),
+          Obx(() => ElevatedButton(
+            onPressed: viewModel.loading.value
+                ? null
+                : () {
+              viewModel.bookAppointment(
+                doctorName: "Dr. Asim",
+                date: viewModel.selectedDate.value,
+                slot: viewModel.selectedTime.value,
+                userId: "123", // Replace with actual user ID
+              );
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: darkGreenColor,
+              padding: EdgeInsets.symmetric(vertical: 14),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+            child: viewModel.loading.value
+                ? CircularProgressIndicator(color: whiteColor)
+                : Text(
+              "Book an Appointment",
+              style: TextStyle(color: whiteColor, fontSize: 16),
+            ),
+          )),
         ],
       ),
     );

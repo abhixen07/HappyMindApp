@@ -118,13 +118,18 @@ class _LoginPageState extends State<LoginPage> {
 
                       /// Sign in Button
                       Obx(() => TextButton(
-                        onPressed: loginViewModel.loading.value
-                            ? null  // Disable button while logging in
-                            : () {
-                          if (formKey.currentState!.validate()) {
-                            loginViewModel.loginUser(context);
-                          }
+                        onPressed: (){
+                          context.goNamed(NamedRoutes.navbarpage.name);
+
+
                         },
+                        // onPressed: loginViewModel.loading.value
+                        //     ? null  // Disable button while logging in
+                        //     : () {
+                        //   if (formKey.currentState!.validate()) {
+                        //     loginViewModel.loginUser(context);
+                        //   }
+                        // },
                         child: Text(
                           loginViewModel.loading.value ? 'Signing in...' : 'Sign In',
                           style: TextStyle(color: whiteColor), // Optional: customize text color
